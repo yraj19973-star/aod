@@ -52,27 +52,33 @@
             z-index: 1;
         }
 
-        /* Fullscreen Toggle */
-        .fs-toggle-btn {
+        /* Top Action Buttons Group */
+        .top-controls {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 50;
+            display: flex;
+            gap: 10px;
+        }
+
+        .ctrl-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #64748b;
+            color: #94a3b8;
             padding: 8px 18px;
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             border-radius: 20px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
-        .fs-toggle-btn:hover {
+        .ctrl-btn:hover {
             color: #ffffff;
             background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         /* Layout Grid */
@@ -86,6 +92,7 @@
             width: 95%;
             max-width: 1450px;
             padding: 10px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Ninja Cards */
@@ -106,6 +113,18 @@
             position: relative;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
             overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hidden Ninja State */
+        .jutsu-card.hidden {
+            width: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            opacity: 0 !important;
+            border: none !important;
+            transform: scale(0.7);
+            pointer-events: none;
         }
 
         .jutsu-card.left::before {
@@ -174,7 +193,7 @@
             text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
         }
 
-        /* Dashboard Container */
+        /* --- DASHBOARD CONTAINER --- */
         .dashboard-container {
             display: flex;
             flex-direction: column;
@@ -188,22 +207,40 @@
             max-width: 820px;
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9),
                         inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dynamic Expansion When Ninjas Are Turned Off */
+        .dashboard-container.expanded {
+            max-width: 1050px;
+            padding: 55px 75px 45px 75px;
         }
 
         .stats-row {
             display: flex;
             gap: 35px;
             align-items: center;
+            transition: all 0.5s ease;
         }
 
         .divider {
             width: 1px;
             height: 130px;
             background: rgba(255, 255, 255, 0.08);
+            transition: height 0.5s ease;
+        }
+
+        .dashboard-container.expanded .divider {
+            height: 170px;
         }
 
         .clock-section {
             min-width: 360px;
+            transition: all 0.5s ease;
+        }
+
+        .dashboard-container.expanded .clock-section {
+            min-width: 520px;
         }
 
         .date-display {
@@ -212,25 +249,44 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 8px;
+            transition: all 0.5s ease;
         }
 
-        /* Bada Clock Size */
+        .dashboard-container.expanded .date-display {
+            font-size: 1.15rem;
+            letter-spacing: 5px;
+        }
+
+        /* Dynamic Clock Digits */
         .time-display {
-            font-size: 6.8rem;
+            font-size: 6.2rem;
             font-weight: 200;
             color: #ffffff;
             letter-spacing: -3px;
             line-height: 1;
             display: flex;
             align-items: baseline;
+            transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Massive Size when ninjas are hidden */
+        .dashboard-container.expanded .time-display {
+            font-size: 9.5rem;
+            letter-spacing: -5px;
         }
 
         .seconds {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin-left: 10px;
             background: linear-gradient(45deg, #818cf8, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: font-size 0.5s ease;
+        }
+
+        .dashboard-container.expanded .seconds {
+            font-size: 3.5rem;
+            margin-left: 14px;
         }
 
         .period {
@@ -238,6 +294,12 @@
             color: #334155;
             margin-left: 12px;
             font-weight: 600;
+            transition: font-size 0.5s ease;
+        }
+
+        .dashboard-container.expanded .period {
+            font-size: 1.8rem;
+            margin-left: 16px;
         }
 
         .weather-section {
@@ -254,6 +316,11 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            transition: all 0.5s ease;
+        }
+
+        .dashboard-container.expanded .location-display {
+            font-size: 1.15rem;
         }
 
         .temp-display {
@@ -261,12 +328,22 @@
             font-weight: 300;
             line-height: 1;
             margin-bottom: 8px;
+            transition: font-size 0.5s ease;
+        }
+
+        .dashboard-container.expanded .temp-display {
+            font-size: 5.5rem;
         }
 
         .weather-condition {
             font-size: 1.1rem;
             color: #cbd5e1;
             margin-bottom: 16px;
+            transition: font-size 0.5s ease;
+        }
+
+        .dashboard-container.expanded .weather-condition {
+            font-size: 1.3rem;
         }
 
         .weather-details {
@@ -291,7 +368,7 @@
             font-weight: 500;
         }
 
-        /* Bada Quotes Module */
+        /* Quotes Module */
         .quote-container {
             margin-top: 30px;
             padding-top: 24px;
@@ -306,6 +383,10 @@
             color: #e2e8f0;
             font-style: italic;
             transition: opacity 0.6s ease;
+        }
+
+        .dashboard-container.expanded .quote-text {
+            font-size: 1.35rem;
         }
 
         .quote-author {
@@ -328,21 +409,22 @@
                 max-width: 400px;
                 height: 220px;
             }
-            .gif-wrapper {
-                height: 150px;
-            }
             .time-display {
-                font-size: 5rem;
+                font-size: 4.8rem !important;
             }
-            .quote-text {
-                font-size: 1rem;
+            .dashboard-container.expanded .time-display {
+                font-size: 5.5rem !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <button class="fs-toggle-btn" onclick="toggleFullscreen()">Fullscreen</button>
+    <!-- Controls Menu -->
+    <div class="top-controls">
+        <button class="ctrl-btn" id="ninja-toggle-btn" onclick="toggleNinjas()">Hide Ninjas</button>
+        <button class="ctrl-btn" onclick="toggleFullscreen()">Fullscreen</button>
+    </div>
 
     <div class="glow-orb"></div>
     <div class="glow-orb-2"></div>
@@ -350,7 +432,7 @@
     <div class="stage-wrapper">
         
         <!-- LEFT: Naruto Rasengan -->
-        <div class="jutsu-card left">
+        <div class="jutsu-card left" id="ninja-left">
             <div class="gif-wrapper">
                 <svg viewBox="0 0 200 280" class="ninja-gif">
                     <defs>
@@ -389,8 +471,8 @@
             <div class="jutsu-label">Rasengan • Naruto</div>
         </div>
 
-        <!-- CENTER: Dashboard -->
-        <div class="dashboard-container">
+        <!-- CENTER: Dashboard Panel -->
+        <div class="dashboard-container" id="dashboard-box">
             <div class="stats-row">
                 <div class="clock-section">
                     <div class="date-display" id="date">LOADING...</div>
@@ -430,7 +512,7 @@
         </div>
 
         <!-- RIGHT: Sasuke Chidori -->
-        <div class="jutsu-card right">
+        <div class="jutsu-card right" id="ninja-right">
             <div class="gif-wrapper">
                 <svg viewBox="0 0 200 280" class="ninja-gif">
                     <defs>
@@ -469,6 +551,31 @@
     </div>
 
     <script>
+        // --- NINJA TOGGLE & CLOCK SCALE ENGINE ---
+        let ninjasVisible = true;
+
+        function toggleNinjas() {
+            const leftNinja = document.getElementById('ninja-left');
+            const rightNinja = document.getElementById('ninja-right');
+            const dashboardBox = document.getElementById('dashboard-box');
+            const toggleBtn = document.getElementById('ninja-toggle-btn');
+
+            ninjasVisible = !ninjasVisible;
+
+            if (ninjasVisible) {
+                leftNinja.classList.remove('hidden');
+                rightNinja.classList.remove('hidden');
+                dashboardBox.classList.remove('expanded');
+                toggleBtn.textContent = 'Hide Ninjas';
+            } else {
+                leftNinja.classList.add('hidden');
+                rightNinja.classList.add('hidden');
+                dashboardBox.classList.add('expanded');
+                toggleBtn.textContent = 'Show Ninjas';
+            }
+        }
+
+        // Fullscreen Toggle
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(() => {});
@@ -477,6 +584,7 @@
             }
         }
 
+        // Clock Engine
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
@@ -496,6 +604,7 @@
         updateClock();
         setInterval(updateClock, 1000);
 
+        // Fallback Quotes
         const fallbackQuotes = [
             { text: "We suffer more often in imagination than in reality.", author: "Seneca" },
             { text: "Simplicity is the prerequisite for reliability.", author: "Edsger W. Dijkstra" },
@@ -551,8 +660,9 @@
         }
 
         fetchLiveQuote();
-        setInterval(fetchLiveQuote, 60000);
+        setInterval(fetchLiveQuote, 60000); // 1 minute quote rotation
 
+        // Weather Code Mapping
         function interpretWeatherCode(code) {
             const mapping = {
                 0: "Clear Sky", 1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
@@ -561,7 +671,43 @@
             return mapping[code] || "Clear";
         }
 
+        // --- PRECISE GPS & WEATHER ENGINE ---
         async function syncLocationAndWeather() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        try {
+                            const revGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+                            const placeData = await revGeo.json();
+                            
+                            const exactPlace = placeData.address.city || 
+                                               placeData.address.town || 
+                                               placeData.address.suburb || 
+                                               placeData.address.neighbourhood || 
+                                               placeData.address.county || 
+                                               "LOCAL";
+
+                            document.getElementById('location').textContent = exactPlace.toUpperCase();
+                        } catch (e) {
+                            document.getElementById('location').textContent = "LOCAL";
+                        }
+
+                        pullWeatherData(lat, lon);
+                    },
+                    (error) => {
+                        fallbackIPLocation();
+                    },
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                );
+            } else {
+                fallbackIPLocation();
+            }
+        }
+
+        async function fallbackIPLocation() {
             try {
                 const geo = await fetch('https://ipapi.co/json/');
                 const data = await geo.json();
@@ -571,6 +717,7 @@
                     return;
                 }
             } catch(e) {}
+
             document.getElementById('location').textContent = "NEW YORK";
             pullWeatherData(40.7128, -74.0060);
         }
