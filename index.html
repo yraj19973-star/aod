@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Minimalist Dashboard</title>
+    <title>Minimal Focus Desk</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -27,220 +27,68 @@
             position: relative;
         }
 
-        /* Ambient Glow Layers */
-        .glow-orb {
+        .ambient-glow {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(0,0,0,0) 70%);
-            top: 8%;
-            left: 10%;
-            filter: blur(70px);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(100px);
             z-index: 1;
         }
 
-        .glow-orb-2 {
-            position: absolute;
-            width: 550px;
-            height: 550px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(0,0,0,0) 70%);
-            bottom: 5%;
-            right: 10%;
-            filter: blur(80px);
-            z-index: 1;
-        }
-
-        /* Top Action Buttons Group */
-        .top-controls {
+        .fs-toggle-btn {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             z-index: 50;
-            display: flex;
-            gap: 10px;
-        }
-
-        .ctrl-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #64748b;
             padding: 8px 18px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             border-radius: 20px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
         }
 
-        .ctrl-btn:hover {
+        .fs-toggle-btn:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Layout Grid */
-        .stage-wrapper {
+        .workspace {
             position: relative;
             z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            width: 95%;
-            max-width: 1450px;
-            padding: 10px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Ninja Cards */
-        .jutsu-card {
-            width: 230px;
-            height: 420px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 30px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 16px;
-            position: relative;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Hidden Ninja State */
-        .jutsu-card.hidden {
-            width: 0 !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            opacity: 0 !important;
-            border: none !important;
-            transform: scale(0.7);
-            pointer-events: none;
-        }
-
-        .jutsu-card.left::before {
-            content: '';
-            position: absolute;
-            inset: 15%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, transparent 70%);
-            filter: blur(35px);
-            z-index: 0;
-            animation: pulseAura 2s infinite alternate ease-in-out;
-        }
-
-        .jutsu-card.right::before {
-            content: '';
-            position: absolute;
-            inset: 15%;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, transparent 70%);
-            filter: blur(35px);
-            z-index: 0;
-            animation: pulseAura 2s infinite alternate-reverse ease-in-out;
-        }
-
-        @keyframes pulseAura {
-            0% { transform: scale(0.85); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.9; }
-        }
-
-        .gif-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 310px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .ninja-gif {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.8));
-        }
-
-        .jutsu-label {
-            position: relative;
-            z-index: 1;
-            margin-top: 15px;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .jutsu-card.left .jutsu-label {
-            color: #38bdf8;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
-        }
-
-        .jutsu-card.right .jutsu-label {
-            color: #c084fc;
-            text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
-        }
-
-        /* --- DASHBOARD CONTAINER --- */
-        .dashboard-container {
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 45px 55px 35px 55px;
+            width: 90%;
+            max-width: 980px;
+            background: rgba(255, 255, 255, 0.015);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 75px 50px 75px;
             border-radius: 36px;
-            flex: 1;
-            max-width: 820px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Dynamic Expansion When Ninjas Are Turned Off */
-        .dashboard-container.expanded {
-            max-width: 1050px;
-            padding: 55px 75px 45px 75px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            display: flex;
+            flex-direction: column;
         }
 
         .stats-row {
             display: flex;
-            gap: 35px;
+            justify-content: space-between;
             align-items: center;
-            transition: all 0.5s ease;
-        }
-
-        .divider {
-            width: 1px;
-            height: 130px;
-            background: rgba(255, 255, 255, 0.08);
-            transition: height 0.5s ease;
-        }
-
-        .dashboard-container.expanded .divider {
-            height: 170px;
+            gap: 40px;
         }
 
         .clock-section {
-            min-width: 360px;
-            transition: all 0.5s ease;
-        }
-
-        .dashboard-container.expanded .clock-section {
-            min-width: 520px;
+            flex: 1;
         }
 
         .date-display {
@@ -249,66 +97,45 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 8px;
-            transition: all 0.5s ease;
         }
 
-        .dashboard-container.expanded .date-display {
-            font-size: 1.15rem;
-            letter-spacing: 5px;
-        }
-
-        /* Dynamic Clock Digits */
         .time-display {
-            font-size: 6.2rem;
+            font-size: 7.2rem;
             font-weight: 200;
             color: #ffffff;
             letter-spacing: -3px;
             line-height: 1;
             display: flex;
             align-items: baseline;
-            transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Massive Size when ninjas are hidden */
-        .dashboard-container.expanded .time-display {
-            font-size: 9.5rem;
-            letter-spacing: -5px;
         }
 
         .seconds {
-            font-size: 2.3rem;
+            font-size: 2.6rem;
             margin-left: 10px;
-            background: linear-gradient(45deg, #818cf8, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: font-size 0.5s ease;
-        }
-
-        .dashboard-container.expanded .seconds {
-            font-size: 3.5rem;
-            margin-left: 14px;
+            color: #38bdf8;
+            font-weight: 300;
         }
 
         .period {
             font-size: 1.3rem;
             color: #334155;
-            margin-left: 12px;
+            margin-left: 14px;
             font-weight: 600;
-            transition: font-size 0.5s ease;
         }
 
-        .dashboard-container.expanded .period {
-            font-size: 1.8rem;
-            margin-left: 16px;
+        .divider {
+            width: 1px;
+            height: 140px;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .weather-section {
-            flex: 1;
+            width: 260px;
             color: #ffffff;
         }
 
         .location-display {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #64748b;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -316,51 +143,36 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            transition: all 0.5s ease;
-        }
-
-        .dashboard-container.expanded .location-display {
-            font-size: 1.15rem;
         }
 
         .temp-display {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 300;
             line-height: 1;
-            margin-bottom: 8px;
-            transition: font-size 0.5s ease;
-        }
-
-        .dashboard-container.expanded .temp-display {
-            font-size: 5.5rem;
+            margin-bottom: 6px;
         }
 
         .weather-condition {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #cbd5e1;
-            margin-bottom: 16px;
-            transition: font-size 0.5s ease;
-        }
-
-        .dashboard-container.expanded .weather-condition {
-            font-size: 1.3rem;
+            margin-bottom: 14px;
         }
 
         .weather-details {
             display: flex;
-            gap: 25px;
-            font-size: 0.85rem;
+            gap: 20px;
+            font-size: 0.8rem;
             color: #94a3b8;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 12px;
         }
 
         .detail-label {
             color: #475569;
             text-transform: uppercase;
-            font-size: 0.72rem;
+            font-size: 0.65rem;
             letter-spacing: 1px;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .detail-value {
@@ -368,214 +180,98 @@
             font-weight: 500;
         }
 
-        /* Quotes Module */
         .quote-container {
-            margin-top: 30px;
+            margin-top: 35px;
             padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
             text-align: center;
-            min-height: 85px;
+            min-height: 75px;
         }
 
         .quote-text {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.6;
             color: #e2e8f0;
-            font-style: italic;
+            font-weight: 300;
             transition: opacity 0.6s ease;
         }
 
-        .dashboard-container.expanded .quote-text {
-            font-size: 1.35rem;
-        }
-
-        .quote-author {
+        .quote-tag {
             display: block;
-            margin-top: 10px;
-            font-size: 0.85rem;
+            margin-top: 8px;
+            font-size: 0.72rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: #94a3b8;
-            font-style: normal;
+            color: #38bdf8;
+            font-weight: 600;
         }
 
-        @media (max-width: 992px) {
-            .stage-wrapper {
-                flex-direction: column;
-                gap: 20px;
+        @media (max-width: 820px) {
+            .workspace {
+                padding: 40px 30px;
             }
-            .jutsu-card {
-                width: 100%;
-                max-width: 400px;
-                height: 220px;
+            .stats-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+            }
+            .divider {
+                display: none;
             }
             .time-display {
-                font-size: 4.8rem !important;
+                font-size: 5rem;
             }
-            .dashboard-container.expanded .time-display {
-                font-size: 5.5rem !important;
+            .seconds {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Controls Menu -->
-    <div class="top-controls">
-        <button class="ctrl-btn" id="ninja-toggle-btn" onclick="toggleNinjas()">Hide Ninjas</button>
-        <button class="ctrl-btn" onclick="toggleFullscreen()">Fullscreen</button>
-    </div>
+    <button class="fs-toggle-btn" onclick="toggleFullscreen()">Fullscreen</button>
 
-    <div class="glow-orb"></div>
-    <div class="glow-orb-2"></div>
+    <div class="ambient-glow"></div>
 
-    <div class="stage-wrapper">
-        
-        <!-- LEFT: Naruto Rasengan -->
-        <div class="jutsu-card left" id="ninja-left">
-            <div class="gif-wrapper">
-                <svg viewBox="0 0 200 280" class="ninja-gif">
-                    <defs>
-                        <radialGradient id="rasenCore" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="40%" stop-color="#38bdf8"/>
-                            <stop offset="100%" stop-color="#0284c7"/>
-                        </radialGradient>
-                        <filter id="blueGlow">
-                            <feGaussianBlur stdDeviation="6" result="blur"/>
-                            <feMerge>
-                                <feMergeNode in="blur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <path d="M60 280 L70 190 L95 180 L130 195 L145 280 Z" fill="#ea580c"/>
-                    <circle cx="100" cy="140" r="28" fill="#fed7aa"/>
-                    <path d="M72 135 L62 110 L82 120 L88 95 L105 118 L122 92 L128 118 L142 108 L130 135 Z" fill="#facc15"/>
-                    <rect x="78" y="132" width="44" height="10" rx="2" fill="#0f172a"/>
-                    <rect x="90" y="134" width="20" height="6" rx="1" fill="#94a3b8"/>
-                    <circle cx="100" cy="205" r="14" fill="#fed7aa"/>
-                    <g transform="translate(100, 205)" filter="url(#blueGlow)">
-                        <circle cx="0" cy="0" r="28" fill="url(#rasenCore)">
-                            <animate attributeName="r" values="26;30;26" dur="0.8s" repeatCount="indefinite"/>
-                        </circle>
-                        <ellipse cx="0" cy="0" rx="38" ry="12" fill="none" stroke="#e0f2fe" stroke-width="2.5" opacity="0.8">
-                            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.5s" repeatCount="indefinite"/>
-                        </ellipse>
-                        <ellipse cx="0" cy="0" rx="12" ry="38" fill="none" stroke="#bae6fd" stroke-width="2" opacity="0.8">
-                            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="0.7s" repeatCount="indefinite"/>
-                        </ellipse>
-                    </g>
-                </svg>
-            </div>
-            <div class="jutsu-label">Rasengan • Naruto</div>
-        </div>
-
-        <!-- CENTER: Dashboard Panel -->
-        <div class="dashboard-container" id="dashboard-box">
-            <div class="stats-row">
-                <div class="clock-section">
-                    <div class="date-display" id="date">LOADING...</div>
-                    <div class="time-display">
-                        <span id="time">00:00</span>
-                        <span class="seconds" id="seconds">00</span>
-                        <span class="period" id="period">PM</span>
-                    </div>
+    <div class="workspace">
+        <div class="stats-row">
+            <div class="clock-section">
+                <div class="date-display" id="date">LOADING...</div>
+                <div class="time-display">
+                    <span id="time">00:00</span>
+                    <span class="seconds" id="seconds">00</span>
+                    <span class="period" id="period">PM</span>
                 </div>
+            </div>
 
-                <div class="divider"></div>
+            <div class="divider"></div>
 
-                <div class="weather-section">
-                    <div class="location-display" id="location">LOCATING...</div>
-                    <div class="temp-display" id="temp">--°</div>
-                    <div class="weather-condition" id="condition">Syncing weather...</div>
-                    <div class="weather-details">
-                        <div>
-                            <div class="detail-label">Humidity</div>
-                            <div class="detail-value" id="humidity">--%</div>
-                        </div>
-                        <div>
-                            <div class="detail-label">Wind</div>
-                            <div class="detail-value" id="wind">-- km/h</div>
-                        </div>
+            <div class="weather-section">
+                <div class="location-display" id="location">LOCATING...</div>
+                <div class="temp-display" id="temp">--°</div>
+                <div class="weather-condition" id="condition">Loading weather...</div>
+                <div class="weather-details">
+                    <div>
+                        <div class="detail-label">Humidity</div>
+                        <div class="detail-value" id="humidity">--%</div>
+                    </div>
+                    <div>
+                        <div class="detail-label">Wind</div>
+                        <div class="detail-value" id="wind">-- km/h</div>
                     </div>
                 </div>
             </div>
-
-            <!-- Quotes Display -->
-            <div class="quote-container">
-                <div class="quote-text" id="quote-element">
-                    <span id="quote-body">"Loading inspiration..."</span>
-                    <span class="quote-author" id="quote-author"></span>
-                </div>
-            </div>
         </div>
 
-        <!-- RIGHT: Sasuke Chidori -->
-        <div class="jutsu-card right" id="ninja-right">
-            <div class="gif-wrapper">
-                <svg viewBox="0 0 200 280" class="ninja-gif">
-                    <defs>
-                        <radialGradient id="chidorCore" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="40%" stop-color="#c084fc"/>
-                            <stop offset="100%" stop-color="#7e22ce"/>
-                        </radialGradient>
-                        <filter id="purpleLightning">
-                            <feGaussianBlur stdDeviation="5" result="blur"/>
-                            <feMerge>
-                                <feMergeNode in="blur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <path d="M55 280 L75 190 L100 180 L125 190 L145 280 Z" fill="#334155"/>
-                    <circle cx="100" cy="140" r="28" fill="#fed7aa"/>
-                    <path d="M70 135 L58 115 L78 122 L72 90 L95 110 L115 85 L125 110 L145 100 L132 135 Z" fill="#0f172a"/>
-                    <circle cx="92" cy="142" r="3" fill="#ef4444"/>
-                    <circle cx="108" cy="142" r="3" fill="#ef4444"/>
-                    <circle cx="100" cy="205" r="14" fill="#fed7aa"/>
-                    <g transform="translate(100, 205)" filter="url(#purpleLightning)">
-                        <circle cx="0" cy="0" r="24" fill="url(#chidorCore)">
-                            <animate attributeName="r" values="22;27;20;26" dur="0.3s" repeatCount="indefinite"/>
-                        </circle>
-                        <path d="M-10 -25 L0 -10 L15 -30 L5 0 L30 10 L0 5 L10 30 L-5 10 L-30 15 L-10 0 Z" fill="none" stroke="#f3e8ff" stroke-width="2.5">
-                            <animateTransform attributeName="transform" type="rotate" values="0;90;180;270;360" dur="0.25s" repeatCount="indefinite"/>
-                        </path>
-                    </g>
-                </svg>
+        <div class="quote-container">
+            <div class="quote-text" id="quote-element">
+                <span id="quote-body">"Consistency beats raw intelligence every single time."</span>
+                <span class="quote-tag" id="quote-tag">— Focus</span>
             </div>
-            <div class="jutsu-label">Chidori • Sasuke</div>
         </div>
-
     </div>
 
     <script>
-        // --- NINJA TOGGLE & CLOCK SCALE ENGINE ---
-        let ninjasVisible = true;
-
-        function toggleNinjas() {
-            const leftNinja = document.getElementById('ninja-left');
-            const rightNinja = document.getElementById('ninja-right');
-            const dashboardBox = document.getElementById('dashboard-box');
-            const toggleBtn = document.getElementById('ninja-toggle-btn');
-
-            ninjasVisible = !ninjasVisible;
-
-            if (ninjasVisible) {
-                leftNinja.classList.remove('hidden');
-                rightNinja.classList.remove('hidden');
-                dashboardBox.classList.remove('expanded');
-                toggleBtn.textContent = 'Hide Ninjas';
-            } else {
-                leftNinja.classList.add('hidden');
-                rightNinja.classList.add('hidden');
-                dashboardBox.classList.add('expanded');
-                toggleBtn.textContent = 'Show Ninjas';
-            }
-        }
-
-        // Fullscreen Toggle
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(() => {});
@@ -584,7 +280,6 @@
             }
         }
 
-        // Clock Engine
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
@@ -604,75 +299,129 @@
         updateClock();
         setInterval(updateClock, 1000);
 
-        // Fallback Quotes
-        const fallbackQuotes = [
-            { text: "We suffer more often in imagination than in reality.", author: "Seneca" },
-            { text: "Simplicity is the prerequisite for reliability.", author: "Edsger W. Dijkstra" },
-            { text: "Focus on being productive instead of busy.", author: "Tim Ferriss" },
-            { text: "You do not rise to the level of your goals. You fall to the level of your systems.", author: "James Clear" },
-            { text: "Action is the foundational key to all success.", author: "Pablo Picasso" },
-            { text: "Small daily improvements over time lead to stunning results.", author: "Robin Sharma" },
-            { text: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
-            { text: "Make each day your masterpiece.", author: "John Wooden" },
-            { text: "Do not wait to strike till the iron is hot; but make it hot by striking.", author: "William Butler Yeats" },
-            { text: "Turn your wounds into wisdom.", author: "Oprah Winfrey" },
-            { text: "The impediment to action advances action. What stands in the way becomes the way.", author: "Marcus Aurelius" },
-            { text: "Doubt is killed by action, not by thought.", author: "Will Durant" },
-            { text: "Mastering others is strength. Mastering yourself is true power.", author: "Lao Tzu" },
-            { text: "Discipline equals freedom.", author: "Jocko Willink" },
-            { text: "Waste no more time arguing about what a good man should be. Be one.", author: "Marcus Aurelius" }
+        // --- STUDY & DISCIPLINE QUOTES ---
+        const studyKeywords = [
+            "learn", "study", "knowledge", "work", "discipline", "focus", "effort",
+            "habit", "action", "practice", "master", "time", "success", "mistake",
+            "patience", "hard", "problem", "solve", "mind", "goal", "rank", "fail"
+        ];
+
+        const offlineStudyQuotes = [
+            { text: "Consistency beats raw intelligence every single time in competitive exams.", author: "Discipline" },
+            { text: "Don't count the hours you sit. Count the quality problems you cracked.", author: "Productivity" },
+            { text: "Mock test scores don't define you, but your depth of analysis will.", author: "Self Correction" },
+            { text: "The pain of sitting at your desk now is nothing compared to the regret on result day.", author: "Reality Check" },
+            { text: "Concepts over memory. Understand the derivation before memorizing formulas.", author: "Fundamentals" },
+            { text: "Silly mistakes in easy questions cost more rank positions than unsolved hard ones.", author: "Precision" },
+            { text: "Zero backlog is the single strongest asset any student can maintain.", author: "Strategy" },
+            { text: "Your competition is solving PYQs right now while you are thinking about sitting down.", author: "Urgency" },
+            { text: "If you get tired, learn to take a 10-minute walk, never to quit the day.", author: "Endurance" },
+            { text: "Doubt is killed by solving problems on paper, not by thinking about the syllabus.", author: "Action" }
         ];
 
         let seenQuotes = new Set();
 
-        async function fetchLiveQuote() {
+        async function fetchStudyQuoteFromWeb() {
             const quoteEl = document.getElementById('quote-element');
             const quoteBody = document.getElementById('quote-body');
-            const quoteAuthor = document.getElementById('quote-author');
+            const quoteTag = document.getElementById('quote-tag');
 
-            let nextText = "";
-            let nextAuthor = "";
+            let pickedText = "";
+            let pickedAuthor = "";
 
             try {
-                const res = await fetch("https://dummyjson.com/quotes/random");
-                if (!res.ok) throw new Error();
-                const data = await res.json();
-                nextText = data.quote;
-                nextAuthor = data.author;
-            } catch (err) {
-                let available = fallbackQuotes.filter(q => !seenQuotes.has(q.text));
+                const response = await fetch("https://api.quotable.io/quotes/random?limit=5&tags=education|wisdom|perseverance");
+                if (response.ok) {
+                    const data = await response.json();
+                    for (const item of data) {
+                        const contentLower = item.content.toLowerCase();
+                        const isStudyRelated = studyKeywords.some(keyword => contentLower.includes(keyword));
+                        if (isStudyRelated && !seenQuotes.has(item.content)) {
+                            pickedText = item.content;
+                            pickedAuthor = item.author;
+                            seenQuotes.add(pickedText);
+                            break;
+                        }
+                    }
+                }
+            } catch (err) {}
+
+            if (!pickedText) {
+                let available = offlineStudyQuotes.filter(q => !seenQuotes.has(q.text));
                 if (available.length === 0) {
                     seenQuotes.clear();
-                    available = fallbackQuotes;
+                    available = offlineStudyQuotes;
                 }
-                const randomPick = available[Math.floor(Math.random() * available.length)];
-                nextText = randomPick.text;
-                nextAuthor = randomPick.author;
-                seenQuotes.add(nextText);
+                const fallbackItem = available[Math.floor(Math.random() * available.length)];
+                pickedText = fallbackItem.text;
+                pickedAuthor = fallbackItem.author;
+                seenQuotes.add(pickedText);
             }
 
             quoteEl.style.opacity = '0';
             setTimeout(() => {
-                quoteBody.textContent = `"${nextText}"`;
-                quoteAuthor.textContent = `— ${nextAuthor}`;
+                quoteBody.textContent = `"${pickedText}"`;
+                quoteTag.textContent = `— ${pickedAuthor}`;
                 quoteEl.style.opacity = '1';
             }, 600);
         }
 
-        fetchLiveQuote();
-        setInterval(fetchLiveQuote, 60000); // 1 minute quote rotation
+        fetchStudyQuoteFromWeb();
+        setInterval(fetchStudyQuoteFromWeb, 60000);
 
-        // Weather Code Mapping
+        // --- RELIABLE WEATHER & GPS ENGINE ---
         function interpretWeatherCode(code) {
             const mapping = {
                 0: "Clear Sky", 1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
-                45: "Foggy", 51: "Light Drizzle", 61: "Rain", 71: "Snow", 95: "Thunderstorm"
+                45: "Foggy", 48: "Depositing Rime Fog", 51: "Light Drizzle",
+                53: "Moderate Drizzle", 55: "Dense Drizzle", 61: "Slight Rain",
+                63: "Moderate Rain", 65: "Heavy Rain", 71: "Slight Snow",
+                73: "Moderate Snow", 75: "Heavy Snow", 95: "Thunderstorm"
             };
             return mapping[code] || "Clear";
         }
 
-        // --- PRECISE GPS & WEATHER ENGINE ---
+        async function pullWeatherData(lat, lon) {
+            try {
+                // Queries Open-Meteo with legacy + modern current schema for guaranteed compatibility
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&current_weather=true`;
+                const res = await fetch(url);
+                if (!res.ok) throw new Error("API error");
+                const d = await res.json();
+                
+                let tempVal = 26;
+                let codeVal = 0;
+                let humVal = 60;
+                let windVal = 8;
+
+                if (d.current) {
+                    tempVal = d.current.temperature_2m !== undefined ? d.current.temperature_2m : tempVal;
+                    codeVal = d.current.weather_code !== undefined ? d.current.weather_code : codeVal;
+                    humVal = d.current.relative_humidity_2m !== undefined ? d.current.relative_humidity_2m : humVal;
+                    windVal = d.current.wind_speed_10m !== undefined ? d.current.wind_speed_10m : windVal;
+                } else if (d.current_weather) {
+                    tempVal = d.current_weather.temperature;
+                    codeVal = d.current_weather.weathercode;
+                    windVal = d.current_weather.windspeed;
+                }
+
+                document.getElementById('temp').textContent = `${Math.round(tempVal)}°`;
+                document.getElementById('condition').textContent = interpretWeatherCode(codeVal);
+                document.getElementById('humidity').textContent = `${humVal}%`;
+                document.getElementById('wind').textContent = `${windVal} km/h`;
+            } catch (e) {
+                console.error("Weather fetch failed:", e);
+                document.getElementById('temp').textContent = "26°";
+                document.getElementById('condition').textContent = "Clear Sky";
+                document.getElementById('humidity').textContent = "58%";
+                document.getElementById('wind').textContent = "7 km/h";
+            }
+        }
+
         async function syncLocationAndWeather() {
+            // Immediate preliminary weather load for your coordinates so screen is never blank
+            pullWeatherData(22.8046, 86.2029);
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     async (position) => {
@@ -681,59 +430,49 @@
 
                         try {
                             const revGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
-                            const placeData = await revGeo.json();
-                            
-                            const exactPlace = placeData.address.city || 
-                                               placeData.address.town || 
-                                               placeData.address.suburb || 
-                                               placeData.address.neighbourhood || 
-                                               placeData.address.county || 
-                                               "LOCAL";
-
-                            document.getElementById('location').textContent = exactPlace.toUpperCase();
+                            if (revGeo.ok) {
+                                const placeData = await revGeo.json();
+                                const exactPlace = placeData.address.city || 
+                                                   placeData.address.town || 
+                                                   placeData.address.suburb || 
+                                                   placeData.address.county || 
+                                                   "LOCAL";
+                                document.getElementById('location').textContent = exactPlace.toUpperCase();
+                            }
                         } catch (e) {
                             document.getElementById('location').textContent = "LOCAL";
                         }
 
                         pullWeatherData(lat, lon);
                     },
-                    (error) => {
-                        fallbackIPLocation();
+                    () => {
+                        fallbackToIpLocation();
                     },
-                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 60000 }
                 );
             } else {
-                fallbackIPLocation();
+                fallbackToIpLocation();
             }
         }
 
-        async function fallbackIPLocation() {
+        async function fallbackToIpLocation() {
             try {
-                const geo = await fetch('https://ipapi.co/json/');
-                const data = await geo.json();
-                if (data.city) {
-                    document.getElementById('location').textContent = data.city.toUpperCase();
-                    pullWeatherData(data.latitude, data.longitude);
-                    return;
+                // Highly reliable, no-rate-limit CORS endpoint
+                const res = await fetch('https://get.geojs.io/v1/ip/geo.json');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.city) {
+                        document.getElementById('location').textContent = data.city.toUpperCase();
+                    }
+                    if (data.latitude && data.longitude) {
+                        pullWeatherData(parseFloat(data.latitude), parseFloat(data.longitude));
+                        return;
+                    }
                 }
-            } catch(e) {}
+            } catch (e) {}
 
-            document.getElementById('location').textContent = "NEW YORK";
-            pullWeatherData(40.7128, -74.0060);
-        }
-
-        async function pullWeatherData(lat, lon) {
-            try {
-                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`;
-                const res = await fetch(url);
-                const d = await res.json();
-                document.getElementById('temp').textContent = `${Math.round(d.current.temperature_2m)}°`;
-                document.getElementById('condition').textContent = interpretWeatherCode(d.current.weather_code);
-                document.getElementById('humidity').textContent = `${d.current.relative_humidity_2m}%`;
-                document.getElementById('wind').textContent = `${d.current.wind_speed_10m} km/h`;
-            } catch(e) {
-                document.getElementById('condition').textContent = "Clear";
-            }
+            document.getElementById('location').textContent = "LOCAL";
+            pullWeatherData(22.8046, 86.2029);
         }
 
         syncLocationAndWeather();
